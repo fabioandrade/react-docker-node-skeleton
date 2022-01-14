@@ -1,10 +1,21 @@
 version: "3"
 
-services:
-  app:
-    build: .
-    command: npm start
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/usr/app
+services: 
+    react-app:
+      build: .
+      image: mc-react-web
+      mem_limit: 4096M
+      container_name: mc-react-web
+      entrypoint: ./.docker-entrypoint.sh
+      volumes: 
+        - .:/var/www
+      ports:
+        - "3000:3000"
+      tty: true  
+      networks:   
+        - app-network
+
+networks:
+  app-network:
+    external:
+      name: mc-laravel_app-network
