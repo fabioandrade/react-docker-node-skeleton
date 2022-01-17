@@ -9,9 +9,6 @@ class App extends Component {
 
   async componentDidMount() {
     const response = await api.get('');
-
-    console.log(response);
-
     this.setState({categories: response.data});
   }
 
@@ -33,4 +30,4 @@ class App extends Component {
   };
 };
 
-export default App;
+export default App; 
